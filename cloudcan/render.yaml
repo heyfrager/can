@@ -1,0 +1,39 @@
+# ── ᴀᴠ ʙᴏᴛᴢ ─────────────────────────────
+# ᴜᴘᴅᴀᴛᴇs  : https://t.me/AV_BOTz_UPDATE
+# ᴏᴡɴᴇʀ    : @AV_OWNER_BOT
+# sᴜᴘᴘᴏʀᴛ  : https://t.me/AV_SUPPORT_GROUP
+# ᴄʀᴇᴅɪᴛ   : ᴀᴠ ʙᴏᴛᴢ | ᴀᴍᴀɴ ᴠɪsʜᴡᴀᴋᴀʀᴍᴀ
+# ────────────────────────────────────────
+
+services:
+  - type: web
+    name: av-botz-uploader
+    env: python
+    buildCommand: pip install -U -r requirements.txt
+    startCommand: python bot.py
+    autoDeploy: false
+    envVars:
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMINS
+        sync: false
+      - key: LOG_CHANNEL
+        sync: false
+      - key: DB_URL
+        sync: false
+      - key: AUTH_CHANNEL
+        sync: false
+      - key: FSUB
+        sync: false
+
+# ── ᴀᴠ ʙᴏᴛᴢ ─────────────────────────────
+# ᴜᴘᴅᴀᴛᴇs  : https://t.me/AV_BOTz_UPDATE
+# ᴏᴡɴᴇʀ    : @AV_OWNER_BOT
+# sᴜᴘᴘᴏʀᴛ  : https://t.me/AV_SUPPORT_GROUP
+# ᴄʀᴇᴅɪᴛ   : ᴀᴠ ʙᴏᴛᴢ | ᴀᴍᴀɴ ᴠɪsʜᴡᴀᴋᴀʀᴍᴀ
+# ────────────────────────────────────────
+

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UPLOAD COMPLETE | AV CLOUD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-1: #8b5cf6;
+            --accent-2: #3b82f6;
+            --success: #10b981;
+            --text-main: #f8fafc;
+            --text-sec: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background-color: var(--bg-dark);
+            height: 100vh; width: 100vw;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; position: relative;
+        }
+
+        /* --- BLOBS --- */
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.5; animation: moveBlob 15s infinite alternate; }
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--accent-1); }
+        .blob-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: var(--accent-2); animation-delay: -5s; }
+        @keyframes moveBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(20px, -20px) scale(1.1); } }
+
+        /* --- CARD --- */
+        .container {
+            position: relative; z-index: 10; width: 90%; max-width: 450px;
+            background: var(--card-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-top: 1px solid rgba(255,255,255,0.2);
+            border-radius: 24px; padding: 40px 30px; text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0; transform: scale(0.9);
+        }
+        @keyframes popIn { to { opacity: 1; transform: scale(1); } }
+
+        /* --- ICON --- */
+        .icon-box {
+            width: 80px; height: 80px; background: rgba(16, 185, 129, 0.1); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+            border: 2px solid var(--success); box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+        .icon-box i { font-size: 35px; color: var(--success); animation: checkPop 0.5s ease 0.4s both; }
+        @keyframes checkPop { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+        h2 { color: var(--text-main); margin-bottom: 8px; font-weight: 700; font-size: 22px; }
+        p { color: var(--text-sec); font-size: 14px; margin-bottom: 25px; }
+
+        /* --- COPY BOX --- */
+        .link-container {
+            background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border);
+            border-radius: 12px; padding: 6px; display: flex; align-items: center;
+            margin-bottom: 25px; gap: 10px;
+        }
+        .link-input {
+            background: transparent; border: none; color: var(--accent-2);
+            flex: 1; /* Fixes Width Issue */
+            padding: 10px; font-size: 13px; outline: none;
+            font-family: 'Courier New', monospace; font-weight: 600;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .btn-copy {
+            background: var(--border); border: none; padding: 8px 15px; border-radius: 8px;
+            color: #fff; font-size: 13px; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; gap: 6px; font-weight: 500;
+        }
+        .btn-copy:active { transform: scale(0.95); }
+        .btn-copy.copied { background: var(--success); color: #000; }
+
+        /* --- ACTIONS --- */
+        .actions { display: flex; gap: 10px; }
+        .btn-action {
+            flex: 1; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600;
+            text-decoration: none; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); color: #fff; }
+        .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text-sec); }
+        .btn-action:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    </style>
+</head>
+<body>
+    
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <div class="icon-box">
+            <i class="fas fa-check"></i>
+        </div>
+        
+        <h2>Upload Successful!</h2>
+        <p>File uploaded successfully. Copy your link below.</p>
+
+        <div class="link-container">
+            <input type="text" class="link-input" value="REPLACELINK" id="urlInput" readonly>
+            
+            <button class="btn-copy" onclick="copyUrl()" id="copyBtn">
+                <i class="far fa-copy"></i> Copy
+            </button>
+        </div>
+
+        <div class="actions">
+            <a href="REPLACELINK" target="_blank" class="btn-action btn-primary">
+                <i class="fas fa-external-link-alt"></i> Open
+            </a>
+            <a href="/" class="btn-action btn-secondary">
+                <i class="fas fa-cloud-upload-alt"></i> New
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function copyUrl() {
+            var copyText = document.getElementById("urlInput");
+            
+            // Standard Copy
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(copyText.value);
+            } else {
+                document.execCommand('copy');
+            }
+            
+            var btn = document.getElementById("copyBtn");
+            var originalContent = btn.innerHTML;
+            
+            // Visual Feedback
+            btn.classList.add('copied');
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+            
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = originalContent;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
